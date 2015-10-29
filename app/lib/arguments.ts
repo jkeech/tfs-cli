@@ -4,16 +4,16 @@ export class Argument {
 	public defaultValue: any;
 	public friendlyName: string;
 	public silent: boolean = false;
-	
-	constructor(name: string, 
-		friendlyName: string = name, 
+
+	constructor(name: string,
+		friendlyName: string = name,
 		defaultValue: any = null) {
-			
+
 		this.name = name;
 		this.friendlyName = friendlyName;
 		this.defaultValue = defaultValue;
 	}
-	
+
 	public getValueFromString(stringRepresentation: string): any {
 		return stringRepresentation;
 	}
@@ -21,7 +21,7 @@ export class Argument {
 
 export class BooleanArgument extends Argument {
 	public defaultValue = false;
-	
+
 	public getValueFromString(stringRepresentation: string): boolean {
 		return ((stringRepresentation.toLowerCase() === "true") || (stringRepresentation === "1"));
 	}
@@ -34,7 +34,7 @@ export class FilePathArgument extends Argument {
 }
 
 export class IntArgument extends Argument {
-	
+
 	public getValueFromString(stringRepresentation: string): any {
 		return parseInt(stringRepresentation) || stringRepresentation;
 	}
@@ -45,7 +45,7 @@ export class SilentStringArgument extends Argument {
 }
 
 export class StringArgument extends Argument {
-	
+
 }
 
 export function identity<T>(arg: T): T {
@@ -71,6 +71,8 @@ export var BUILD_ID: IntArgument = new IntArgument('id', 'buildId');
 export var DEFINITION_ID: IntArgument = new IntArgument('definitionid');
 export var DEFINITION_NAME: StringArgument = new StringArgument('definitionname');
 export var STATUS: StringArgument = new StringArgument('status');
+export var TEMPLATE_ID: StringArgument = new StringArgument('id', 'templateId');
+export var TEMPLATE_PATH: FilePathArgument = new FilePathArgument('templatepath');
 export var TOP: IntArgument = new IntArgument('top');
 
 ///TASKS
